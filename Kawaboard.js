@@ -35,6 +35,7 @@ export default class Kawaboard extends React.Component {
       // squareというボタンを作ります。クリックされたとき、iの値をhandleClickに渡します。
       <div>
         <div>
+          下家：
           {this.renderkawa(this.props.p1te[0])}
           {this.renderkawa(this.props.p1te[1])}
           {this.renderkawa(this.props.p1te[2])}
@@ -57,6 +58,7 @@ export default class Kawaboard extends React.Component {
           {this.renderkawa(this.props.p1te[19])}
         </div>
         <div>
+          対面：
           {this.renderkawa(this.props.p2te[0])}
           {this.renderkawa(this.props.p2te[1])}
           {this.renderkawa(this.props.p2te[2])}
@@ -79,6 +81,7 @@ export default class Kawaboard extends React.Component {
           {this.renderkawa(this.props.p2te[19])}
         </div>
         <div>
+          上家：
           {this.renderkawa(this.props.p3te[0])}
           {this.renderkawa(this.props.p3te[1])}
           {this.renderkawa(this.props.p3te[2])}

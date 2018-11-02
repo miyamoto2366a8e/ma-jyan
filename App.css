@@ -5,13 +5,19 @@
   padding : 0;
 }
 
+.game{
+  max-width: 100%;
+  height: auto;
+}
 
-button{
+.game-board button{
   border: 0;
+  width: 6.25%;
 }
 
 img{
-  height:50px
+  max-width:100%;
+  height:auto;
 }
 
 .test{
@@ -20,17 +26,47 @@ img{
 }
 
 .game-board{
-  width:600px;
+  width: 60%;
+  max-width:60%;
   float: left;
 }
 
 .sub{
-  width: 700px;
-  height: 800px;
+  width: 40%;
+  max-width: 40%;
+  /* height: 800px; */
   float: left;
   background-color: aquamarine;
 }
 
+.sub img{
+  max-width: 100%;
+  height: auto;
+}
+
+.sub-kawa img{
+  max-width: 5%;
+  height: auto;
+}
+
+.sub button{
+  width:5%;
+  height:auto;
+}
+
 @media screen and (max-width:640px){
-  img{height:30px;}
+  .game{
+    height: 100%;
+  }
+  .game-board{
+    width: 100%;
+    max-width:100%;
+    float: none;
+  }
+
+  .sub{
+    width: 100%;
+    float: none;
+    max-width: 100%;
+  }
 }

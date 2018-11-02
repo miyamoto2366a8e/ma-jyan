@@ -29,9 +29,9 @@ class App extends React.Component {
       navi: "まず手牌を13枚選んでください",
       kabe:Array(34),
       // p1tehyoji: Array(14).fill(2),
-      countm: "",
-      counts: "",
-      countp: "",
+      countm: "36",
+      counts: "36",
+      countp: "36",
     };
   }
 
@@ -104,7 +104,7 @@ class App extends React.Component {
     // 超分かりにくい特殊なorの使い方。どちらかがtrueかどうかを判断している。詳細は
     // https://qiita.com/Imamotty/items/bc659569239379dded55
     squares[i] = (squares[i] == 1) ? 2 : 1;
-    navi = (turn >= -1) ? "次の指示" : "まずは手牌を13枚選択してください";
+    navi = (turn >= -1) ? "各プレイヤーの捨て牌をクリックして下さい。" : "まずは手牌を13枚選択してください";
     // 捨て牌ソート
     var a = mete;
     var c = p1te;
@@ -258,33 +258,38 @@ for (var c = 72;  c < 108; c++) {
         <div className="sub">
           <p>{this.state.navi}</p>
           <p>{this.state.turnp}の牌を選択中</p>
-          <p>萬子残り{this.state.countm}枚</p>
+          <label>萬子残り{this.state.countm}枚,</label>
+          <label>索子残り{this.state.counts}枚,</label>
+          <label>筒子残り{this.state.countp}枚</label>
+          {/* <p>萬子残り{this.state.countm}枚</p>
           <p>索子残り{this.state.counts}枚</p>
-          <p>筒子残り{this.state.countp}枚</p>
+          <p>筒子残り{this.state.countp}枚</p> */}
+          <div className="sub-kawa">
           <Kawaboard
             // onClick={i => this.handleClick(i)}
             p1te={this.state.p1te}
             p2te={this.state.p2te}
             p3te={this.state.p3te}
           />
+          </div>
           <Meboard
             mete={this.state.mete}
           />
-          {/* <img src={this.state.p1tehyoji[0]}></img> */}
+          {/* <img src={this.state.p1tehyoji[0]}></img>
           <p>{this.state.p1te}</p>
           <p>{this.state.p2te}</p>
           <p>{this.state.p3te}</p>
-          <p>{this.state.mete}</p>
+          <p>{this.state.mete}</p> */}
           <button className="button1" onClick={this.turnchange.bind(this)}>
             P1
       </button>
       <button className="button2" onClick="">
             <img src={this.state.kabe}></img>
       </button>
-          <div className="game-info">
+          {/* <div className="game-info">
             <div>{status}</div>
             <ol>{moves}</ol>
-          </div>
+          </div> */}
         </div>
       </div>
 
