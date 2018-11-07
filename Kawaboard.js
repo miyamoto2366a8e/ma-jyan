@@ -1,4 +1,5 @@
 import React from "react";
+import Button from '@material-ui/core/Button';
 // import ReactDOM from "react-dom"
 
 //   Squareを９個作成して表示する、Squareに対して１～９のパターンのpropsを渡す。
@@ -35,7 +36,9 @@ export default class Kawaboard extends React.Component {
       // squareというボタンを作ります。クリックされたとき、iの値をhandleClickに渡します。
       <div>
         <div>
-          下家：
+        <Button variant="contained" color="primary" className="turnbutton">
+        下家
+    </Button>
           {this.renderkawa(this.props.p1te[0])}
           {this.renderkawa(this.props.p1te[1])}
           {this.renderkawa(this.props.p1te[2])}
@@ -58,7 +61,9 @@ export default class Kawaboard extends React.Component {
           {this.renderkawa(this.props.p1te[19])}
         </div>
         <div>
-          対面：
+        <Button variant="contained" color="primary" className="turnbutton">
+        対面
+    </Button>
           {this.renderkawa(this.props.p2te[0])}
           {this.renderkawa(this.props.p2te[1])}
           {this.renderkawa(this.props.p2te[2])}

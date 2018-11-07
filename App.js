@@ -4,6 +4,7 @@ import Board from './Board.js';
 import Kawaboard from './Kawaboard.js';
 import Meboard from './Meboard.js';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -283,6 +284,7 @@ for (var c = 72;  c < 108; c++) {
           <button className="button1" onClick={this.turnchange.bind(this)}>
             P1
       </button>
+
       <button className="button2" onClick="">
             <img src={this.state.kabe}></img>
       </button>
