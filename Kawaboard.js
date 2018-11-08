@@ -21,6 +21,16 @@ class Kawa extends React.Component {
   }
 }
 
+class Bt extends React.Component {
+  render() {
+    return (
+      <Button variant="contained" color="primary" className="turnbutton" onClick={this.props.onClick}>
+        {this.props.player}
+    </Button>
+    );
+  }
+}
+
 export default class Kawaboard extends React.Component {
   renderkawa(i) {
     return (
@@ -30,15 +40,36 @@ export default class Kawaboard extends React.Component {
       />
     );
   }
+  rbutton(e){
+    let f
+    switch (e) {
+      case 3:
+        f = "下家";
+        break;
+      case 0:
+      f = "対面";
+        break;
+      case 1:
+      f = "上家";
+        break;
+        case 2:
+        f = "自分";
+          break;        
+    }
+    return (
+      <Bt
+        onClick={() => this.props.onClick(e)}
+        player = {f}
+      />
+    )
+  }
   render() {
     return (
       //<button className="square" onClick={i => this.handleClick(i)}>
       // squareというボタンを作ります。クリックされたとき、iの値をhandleClickに渡します。
       <div>
-        <div class="kawa">
-        <Button variant="contained" color="primary" className="turnbutton">
-        下家
-    </Button>
+        <div className="kawa">
+        {this.rbutton(3)}
           {this.renderkawa(this.props.p1te[0])}
           {this.renderkawa(this.props.p1te[1])}
           {this.renderkawa(this.props.p1te[2])}
@@ -60,10 +91,8 @@ export default class Kawaboard extends React.Component {
           {this.renderkawa(this.props.p1te[18])}
           {this.renderkawa(this.props.p1te[19])}
         </div>
-        <div class="kawa">
-        <Button variant="contained" color="primary" className="turnbutton">
-        対面
-    </Button>
+        <div className="kawa">
+        {this.rbutton(0)}
           {this.renderkawa(this.props.p2te[0])}
           {this.renderkawa(this.props.p2te[1])}
           {this.renderkawa(this.props.p2te[2])}
@@ -85,10 +114,8 @@ export default class Kawaboard extends React.Component {
           {this.renderkawa(this.props.p2te[18])}
           {this.renderkawa(this.props.p2te[19])}
         </div>
-        <div class="kawa">
-        <Button variant="contained" color="primary" className="turnbutton">
-          上家
-        </Button>
+        <div className="kawa">
+        {this.rbutton(1)}
           {this.renderkawa(this.props.p3te[0])}
           {this.renderkawa(this.props.p3te[1])}
           {this.renderkawa(this.props.p3te[2])}

@@ -22,6 +22,7 @@ class App extends React.Component {
       p2te: [],
       p3te: [],
       mete: [],
+      mesute: [],
       // プレイヤー１の鳴き牌
       p1naki: [],
       p2naki: [],
@@ -35,7 +36,6 @@ class App extends React.Component {
       countp: "36",
     };
   }
-
   handleClick(i) {
     // ↑で作ったhistorystateの０から１の値(２個)を取りだす。（※一週目の場合）おそらくstepNumberが１ずつ増えるだろう
     // これが使われる＝この時点で既にhistorystateには二個以上の配列が存在する。つまりこの時点で上記squaresプロパティは実行されている
@@ -56,7 +56,7 @@ class App extends React.Component {
     const mete = this.state.mete;
     let navi = this.state.navi;
     let turnp = this.state.turnp;
-    turn = (turn == 3) ? 0 : turn + 1;
+    turn = (turn === 3) ? 0 : turn + 1;
     switch (turn) {
       case -1:
       turnp = "プレイヤー1";
@@ -104,7 +104,7 @@ class App extends React.Component {
     //   もしcalculateWinnerの値がnull以外(決着がついた後)orsquares[i]のマス目に値が入っているのなら何もしない,違うのなら、マス目にXか〇を表示してターンを入れ替える
     // 超分かりにくい特殊なorの使い方。どちらかがtrueかどうかを判断している。詳細は
     // https://qiita.com/Imamotty/items/bc659569239379dded55
-    squares[i] = (squares[i] == 1) ? 2 : 1;
+    squares[i] = (squares[i] === 1) ? 2 : 1;
     navi = (turn >= -1) ? "各プレイヤーの捨て牌をクリックして下さい。" : "まずは手牌を13枚選択してください";
     // 捨て牌ソート
     var a = mete;
@@ -171,22 +171,21 @@ class App extends React.Component {
     let countm = 0;
     let counts = 0;
     let countp = 0;
-    for (var a = 0;  a < 36; a++) {
-      if(squares[a] == 1){
+    for (var count_a = 0;  count_a < 36; count_a++) {
+      if(squares[count_a] === 1){
           countm++;
       }
   }
-  for (var b = 36;  b < 72; b++) {
-    if(squares[b] == 1){
+  for (var count_b = 36;  count_b < 72; count_b++) {
+    if(squares[count_b] === 1){
         counts++;
     }
 }
-for (var c = 72;  c < 108; c++) {
-  if(squares[c] == 1){
+for (var count_c = 72;  count_c < 108; count_c++) {
+  if(squares[count_c] === 1){
       countp++;
   }
 }
-    
     this.setState({
       history: history.concat([
         {
@@ -207,23 +206,20 @@ for (var c = 72;  c < 108; c++) {
       countp: countp,
     });
   }
-
   jumpTo(step) {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0
     });
   }
-
 // ボタンを押すと、押したプレイヤーのターンになる。ポン、チー用
-  turnchange() {
-    let aaaa = this.state.turn;
-    aaaa = 0;
+  turnchange(e) {
+    let turn = this.state.turn;
+    turn = e;
     this.setState({
-      turn: aaaa,
+      turn: turn,
     });
   }
-
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -238,13 +234,6 @@ for (var c = 72;  c < 108; c++) {
         </li>
       );
     });
-    let status;
-    // switch(this.state.p1te[a]){
-    //   case null:
-    //   p1tehyoji = this.state.p1te + ".gif";
-    //   break;
-    // }
-
     // 実際に表示するもの
     return (
       <div className="game">
@@ -267,13 +256,15 @@ for (var c = 72;  c < 108; c++) {
           <p>筒子残り{this.state.countp}枚</p> */}
           <div className="sub-kawa">
           <Kawaboard
-            // onClick={i => this.handleClick(i)}
+            onClick={e => this.turnchange(e)}
             p1te={this.state.p1te}
             p2te={this.state.p2te}
             p3te={this.state.p3te}
           />
           </div>
           <Meboard
+          onClick={e => this.turnchange(e)}
+            mesute={this.state.mesute}
             mete={this.state.mete}
           />
           {/* <img src={this.state.p1tehyoji[0]}></img>
@@ -281,12 +272,12 @@ for (var c = 72;  c < 108; c++) {
           <p>{this.state.p2te}</p>
           <p>{this.state.p3te}</p>
           <p>{this.state.mete}</p> */}
-          <button className="button1" onClick={this.turnchange.bind(this)}>
+          {/* <button className="button1" onClick={this.turnchange.bind(this)}>
             P1
-      </button>
+      </button> */}
 
       <button className="button2" onClick="">
-            <img src={this.state.kabe}></img>
+            <img src={this.state.kabe[1]}></img>
       </button>
           {/* <div className="game-info">
             <div>{status}</div>

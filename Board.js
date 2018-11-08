@@ -5,7 +5,7 @@ import React from "react";
 class Square extends React.Component {
   render() {
     let img = this.props.no + ".gif"
-    const hyoji = (this.props.value == 1) ? <img src={img}></img> : <img src="500.gif"></img>;
+    const hyoji = (this.props.value === 1) ? <img src={img}></img> : <img src="500.gif"></img>;
     return (
       //<button className="square" onClick={i => this.handleClick(i)}>
       // squareというボタンを作ります。クリックされたとき、iの値をhandleClickに渡します。
